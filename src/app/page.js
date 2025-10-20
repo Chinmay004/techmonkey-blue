@@ -1,7 +1,9 @@
 import HeroSection from "@/components/herosection.jsx";
 import MobileNavbar from "@/components/mobile-navbar";
 import Navbar from "@/components/navbar";
-import LottieComponent from "@/components/LottieComponent";
+import LottieComponent from "@/components/lottie-component";
+import ProjectsSection from "@/components/projects-section";
+import TestimonialsSection from "@/components/testimonial-section";
 
 export default function Home() {
   return (
@@ -102,19 +104,29 @@ export default function Home() {
         </section>
         <section
           id="projects"
-          className="min-h-screen bg-background flex text-white text-5xl"
+          className="min-h-screen bg-background text-white text-5xl"
         >
-          <h2 className="font-syne m-14">Our Projects</h2>
+          <div>
+            <h2 className="font-syne pt-14 px-14">Our Projects</h2>
+          </div>
+          <div className="flex justify-center">
+            <ProjectsSection />
+          </div>
         </section>
         <section
           id="testimonials"
-          className="min-h-screen bg-background flex items-center justify-center text-white text-5xl"
+          className="h-screen bg-background text-white text-5xl min-w-full flex flex-col"
         >
-          <h2 className="font-syne">Testimonials</h2>
+          <h2 className="font-syne px-14 flex pb-12">Testimonials</h2>
+          <div className="w-full flex justify-center">
+            <div className="max-w-7xl w-full flex justify-center pt-8 overflow-hidden">
+              <TestimonialsSection />
+            </div>
+          </div>
         </section>
         <section
           id="connect"
-          className="min-h-screen bg-background flex items-center justify-center text-white text-5xl"
+          className="min-h-screen bg-primary flex items-center justify-center text-white text-5xl"
         >
           <h2 className="font-syne">Do you have any questions?</h2>
         </section>
