@@ -114,7 +114,7 @@ export default function Home() {
                 <p>• &nbsp;Visual & Verbal Systems</p>
                 <p>• &nbsp;Cultural Positioning</p>
                 <p>• &nbsp;Rebranding for Scale & Legacy</p>
-                <p>• &nbsp;"Logos fade. Symbols live forever."</p>
+                <p>• &nbsp;&quot;Logos fade. Symbols live forever.&quot;</p>
               </div>
             </div>
           </div>
