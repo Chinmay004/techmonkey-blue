@@ -8,7 +8,7 @@ import FooterContent from "@/components/footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <div className="bg-primary min-h-screen">
         <HeroSection />
         <Navbar />
@@ -16,15 +16,21 @@ export default function Home() {
 
         <section
           id="services"
-          className="min-h-screen bg-primary text-white text-5xl"
+          className="min-h-screen bg-primary text-white py-12 md:py-20"
         >
-          <h2 className="m-14 font-syne">Our Services</h2>
-          <div className="flex">
+          <h2 className="mx-4 sm:mx-8 md:mx-14 mb-8 md:mb-12 text-3xl sm:text-4xl md:text-5xl font-syne">
+            Our Services
+          </h2>
+          
+          {/* Service 1: Web Design & Development */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-0 mb-16 md:mb-24 lg:mb-40">
             <LottieComponent filename="Scene-1.json" />
-            <div>
-              <h2 className="font-syne text-4xl">Web Design & Development</h2>
-              <div className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                <p className="">
+            <div className="px-4 sm:px-8 md:px-14 lg:px-0">
+              <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl mb-4 md:mb-6">
+                Web Design & Development
+              </h2>
+              <div className="pt-2 md:pt-6 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed space-y-2">
+                <p>
                   • &nbsp;Responsive & Progressive Websites - Seamless across
                   devices and platforms.
                 </p>
@@ -43,14 +49,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex mt-40">
+
+          {/* Service 2: CRM */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-0 mb-16 md:mb-24 lg:mb-40">
             <LottieComponent filename="Scene-2.json" />
-            <div>
-              <h2 className="font-syne text-4xl">CRM</h2>
-              <p className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
+            <div className="px-4 sm:px-8 md:px-14 lg:px-0">
+              <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl mb-4 md:mb-6">CRM</h2>
+              <p className="pt-2 md:pt-6 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
                 We build CRMs that feel intelligent, not just functional.
               </p>
-              <div className="pt-2 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
+              <div className="pt-2 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed space-y-2">
                 <p>
                   • &nbsp;Smart Contact Management - Organize and track your
                   customers effortlessly.
@@ -70,64 +78,74 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex mt-40">
+
+          {/* Service 3: Mobile & Product Design */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-0 mb-16 md:mb-24 lg:mb-40">
             <LottieComponent filename="Scene-3.json" />
-            <div>
-              <h2 className="font-syne text-4xl">Mobile & Product Design</h2>
-              <p className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
+            <div className="px-4 sm:px-8 md:px-14 lg:px-0">
+              <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl mb-4 md:mb-6">
+                Mobile & Product Design
+              </h2>
+              <p className="pt-2 md:pt-6 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
                 The future lives in your hand. We build apps that feel crafted,
                 not coded.
               </p>
-              <div className="pt-2 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                <p className="">• &nbsp;Mobile Apps (iOS, Android)</p>
+              <div className="pt-2 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed space-y-2">
+                <p>• &nbsp;Mobile Apps (iOS, Android)</p>
                 <p>• &nbsp;UX Systems that Learn from You</p>
                 <p>• &nbsp;Connected Devices & IoT</p>
                 <p>• &nbsp;App Branding & Launch Ecosystems</p>
               </div>
             </div>
           </div>
-          <div className="flex mt-40 mb-40">
+
+          {/* Service 4: Brand Alchemy */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-0 mb-16 md:mb-24 lg:mb-40">
             <LottieComponent filename="Scene-4.json" />
-            <div>
-              <h2 className="font-syne text-4xl">Brand Alchemy</h2>
-              <div className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                <p className="">
+            <div className="px-4 sm:px-8 md:px-14 lg:px-0">
+              <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl mb-4 md:mb-6">
+                Brand Alchemy
+              </h2>
+              <div className="pt-2 md:pt-6 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed space-y-2">
+                <p>
                   We craft identities that shape how the world remembers you.
                 </p>
                 <p>• &nbsp;Brand Strategy & Naming Architecture</p>
                 <p>• &nbsp;Visual & Verbal Systems</p>
                 <p>• &nbsp;Cultural Positioning</p>
                 <p>• &nbsp;Rebranding for Scale & Legacy</p>
-                <p>• &nbsp;“Logos fade. Symbols live forever.”</p>
+                <p>• &nbsp;"Logos fade. Symbols live forever."</p>
               </div>
             </div>
           </div>
         </section>
         <section
           id="projects"
-          className="min-h-screen bg-background text-white text-5xl"
+          className="min-h-screen bg-background text-white overflow-hidden"
         >
-          <div>
-            <h2 className="font-syne pt-14 px-14">Our Projects</h2>
+          <div className="py-8 md:py-14">
+            <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl px-4 sm:px-8 md:px-14">
+              Our Projects
+            </h2>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center w-full">
             <ProjectsSection />
           </div>
         </section>
         <section
           id="testimonials"
-          className="bg-black text-white py-20"
+          className="bg-black text-white py-12 sm:py-16 md:py-20 overflow-hidden"
         >
-          <h2 className="text-5xl font-syne px-14 mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne px-4 sm:px-8 md:px-14 mb-8 md:mb-12">
             Testimonials
           </h2>
-          <div className="container mx-auto px-4">
+          <div className="w-full">
             <TestimonialsSection />
           </div>
         </section>
         <section
           id="connect"
-          className="h-screen bg-primary text-white text-5xl"
+          className="min-h-screen bg-primary text-white overflow-hidden"
         >
           <FooterContent></FooterContent>
         </section>

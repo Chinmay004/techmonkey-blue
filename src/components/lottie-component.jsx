@@ -22,11 +22,9 @@ const LottieComponent = ({ filename }) => {
   });
 
   return (
-    <div className="px-4 md:px-28">
-      {" "}
-      <div className="flex items-start gap-14">
-        {" "}
-        <div className="rounded-xl overflow-hidden">
+    <div className="w-full lg:w-auto px-4 sm:px-8 md:px-14 lg:px-28">
+      <div className="flex items-start justify-center lg:justify-start">
+        <div className="rounded-xl overflow-hidden w-full max-w-md lg:max-w-lg">
           {animationData ? View : "Loading animation..."}
         </div>
       </div>

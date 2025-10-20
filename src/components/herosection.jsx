@@ -19,14 +19,17 @@ export default function HeroSection() {
         </span>
       </div>
 
-      <div className="absolute bottom-0 left-0 z-20 px-8 md:px-16 my-20 max-w-5xl pb-24">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-4 font-syne font-normal">
+      <div className="absolute bottom-0 left-0 z-20 px-4 sm:px-8 md:px-16 my-12 sm:my-16 md:my-20 max-w-5xl pb-12 sm:pb-16 md:pb-24">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 font-syne font-normal">
           Enhance your Digital Strategy
           <br />
           with Tech Monkeys
         </h1>
 
-        <button className="bg-white text-black px-8 mt-6 py-2 rounded-full text-lg hover:bg-gray-200 transition duration-300">
+        <button 
+          className="bg-white text-black px-6 sm:px-8 mt-4 sm:mt-6 py-3 rounded-full text-base sm:text-lg hover:bg-gray-200 transition duration-300"
+          style={{ minHeight: "44px", minWidth: "44px" }}
+        >
           <a href="#connect">Connect Now</a>
         </button>
       </div>
