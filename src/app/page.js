@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import LottieComponent from "@/components/lottie-component";
 import ProjectsSection from "@/components/projects-section";
 import TestimonialsSection from "@/components/testimonial-section";
+import FooterContent from "@/components/footer";
 
 export default function Home() {
   return (
@@ -115,20 +116,20 @@ export default function Home() {
         </section>
         <section
           id="testimonials"
-          className="h-screen bg-background text-white text-5xl min-w-full flex flex-col"
+          className="bg-black text-white py-20"
         >
-          <h2 className="font-syne px-14 flex pb-12">Testimonials</h2>
-          <div className="w-full flex justify-center">
-            <div className="max-w-7xl w-full flex justify-center pt-8 overflow-hidden">
-              <TestimonialsSection />
-            </div>
+          <h2 className="text-5xl font-syne px-14 mb-12">
+            Testimonials
+          </h2>
+          <div className="container mx-auto px-4">
+            <TestimonialsSection />
           </div>
         </section>
         <section
           id="connect"
-          className="min-h-screen bg-primary flex items-center justify-center text-white text-5xl"
+          className="h-screen bg-primary text-white text-5xl"
         >
-          <h2 className="font-syne">Do you have any questions?</h2>
+          <FooterContent></FooterContent>
         </section>
       </div>
     </main>

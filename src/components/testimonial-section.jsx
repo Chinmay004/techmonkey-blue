@@ -13,7 +13,7 @@ const testimonialsData = [
     text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     person: "Jane Doe",
     title: "Founder of TechCorp",
-    rating: 4,
+    rating: 5,
     imageUrl: "/person.png",
   },
   {
@@ -33,16 +33,24 @@ const testimonialsData = [
 ];
 
 const TestimonialsSection = () => {
-  return testimonialsData.map((item, index) => (
-    <TestimonialCard
-      name={item.person}
-      text={item.text}
-      title={item.title}
-      rating={item.rating}
-      imageUrl={item.imageUrl}
-      key={index}
-    ></TestimonialCard>
-  ));
+  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData];
+  return (
+    <div className="relative w-full overflow-hidden">
+      <div className="flex w-max animate-marquee my-4">
+        {duplicatedTestimonials.map((item, index) => (
+          <div className="mx-2" key={index}>
+            <TestimonialCard
+              name={item.person}
+              text={item.text}
+              title={item.title}
+              rating={item.rating}
+              imageUrl={item.imageUrl}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default TestimonialsSection;
