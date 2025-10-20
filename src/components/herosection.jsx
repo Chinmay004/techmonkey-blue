@@ -1,0 +1,35 @@
+import React from "react";
+
+export default function HeroSection() {
+  return (
+    <div className="relative h-screen w-full overflow-hidden text-white">
+      <video
+        className="absolute inset-0 w-full h-full object-cover object-bottom-left z-0 rotate-z-180"
+        src="/hero-bg.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      ></video>
+
+      {/* <div className="absolute inset-0 bg-black opacity-60 z-10"></div> */}
+      <div className="absolute top-0 left-0 z-20 p-8 md:p-16">
+        <span className="text-2xl md:text-4xl font-medium font-montserrat">
+          techmonkeys
+        </span>
+      </div>
+
+      <div className="absolute bottom-0 left-0 z-20 px-8 md:px-16 my-20 max-w-5xl pb-24">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-4 font-syne font-normal">
+          Enhance your Digital Strategy
+          <br />
+          with Tech Monkeys
+        </h1>
+
+        <button className="bg-white text-black px-8 mt-6 py-2 rounded-full text-lg hover:bg-gray-200 transition duration-300">
+          <a href="#connect">Connect Now</a>
+        </button>
+      </div>
+    </div>
+  );
+}
