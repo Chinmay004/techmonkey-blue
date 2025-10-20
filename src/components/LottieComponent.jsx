@@ -29,7 +29,6 @@ const LottieComponent = ({ filename }) => {
         <div className="rounded-xl overflow-hidden">
           {animationData ? View : "Loading animation..."}
         </div>
-
       </div>
     </div>
   );

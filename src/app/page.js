@@ -44,10 +44,9 @@ export default function Home() {
             <LottieComponent filename="Scene-2.json" />
             <div>
               <h2 className="font-syne text-4xl">CRM</h2>
-                <p className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                  We build CRMs that feel intelligent, not just
-                  functional.
-                </p>
+              <p className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
+                We build CRMs that feel intelligent, not just functional.
+              </p>
               <div className="pt-2 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
                 <p>
                   • &nbsp;Smart Contact Management - Organize and track your
@@ -72,22 +71,15 @@ export default function Home() {
             <LottieComponent filename="Scene-3.json" />
             <div>
               <h2 className="font-syne text-4xl">Mobile & Product Design</h2>
-                <p className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                  The future lives in your hand. We build apps that feel crafted, not coded.
-                </p>
+              <p className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
+                The future lives in your hand. We build apps that feel crafted,
+                not coded.
+              </p>
               <div className="pt-2 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                <p className="">
-                  • &nbsp;Mobile Apps (iOS, Android)
-                </p>
-                <p>
-                  • &nbsp;UX Systems that Learn from You
-                </p>
-                <p>
-                  • &nbsp;Connected Devices & IoT
-                </p>
-                <p>
-                  • &nbsp;App Branding & Launch Ecosystems
-                </p>
+                <p className="">• &nbsp;Mobile Apps (iOS, Android)</p>
+                <p>• &nbsp;UX Systems that Learn from You</p>
+                <p>• &nbsp;Connected Devices & IoT</p>
+                <p>• &nbsp;App Branding & Launch Ecosystems</p>
               </div>
             </div>
           </div>
@@ -96,23 +88,14 @@ export default function Home() {
             <div>
               <h2 className="font-syne text-4xl">Brand Alchemy</h2>
               <div className="pt-6 text-2xl max-w-3xl text-[#CCCCCC] leading-relaxed">
-                <p className="">We craft identities that shape how the world remembers you.
+                <p className="">
+                  We craft identities that shape how the world remembers you.
                 </p>
-                <p>
-                  • &nbsp;Brand Strategy & Naming Architecture
-                </p>
-                <p>
-                  • &nbsp;Visual & Verbal Systems
-                </p>
-                <p>
-                  • &nbsp;Cultural Positioning
-                </p>
-                <p>
-                  • &nbsp;Rebranding for Scale & Legacy
-                </p>
-                <p>
-                  • &nbsp;“Logos fade. Symbols live forever.”
-                </p>
+                <p>• &nbsp;Brand Strategy & Naming Architecture</p>
+                <p>• &nbsp;Visual & Verbal Systems</p>
+                <p>• &nbsp;Cultural Positioning</p>
+                <p>• &nbsp;Rebranding for Scale & Legacy</p>
+                <p>• &nbsp;“Logos fade. Symbols live forever.”</p>
               </div>
             </div>
           </div>
