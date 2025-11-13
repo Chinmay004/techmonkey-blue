@@ -98,9 +98,9 @@ const FooterContent = () => {
 
         {/* Brand Section */}
         <div className="w-full lg:w-auto text-left lg:text-right mt-6 lg:mt-0">
-          <h3 className="text-2xl md:text-3xl text-white mb-3 md:mb-4">TM</h3>
+          <h3 className="text-2xl md:text-3xl text-white mb-3 md:mb-4">techmonkeys</h3>
           <p className="text-sm text-gray-400 mb-3 md:mb-4 max-w-xs lg:ml-auto"></p>
-          <p className="text-xs text-gray-600">© 2025 — Copyright</p>
+          <p className="text-xs text-gray-600">Enhance your Digital Strategy with Tech Monkey<br />© 2025 — Copyright</p>
         </div>
       </div>
     </div>
