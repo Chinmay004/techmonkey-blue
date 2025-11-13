@@ -23,7 +23,7 @@ export default function HeroSection() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 font-syne font-normal">
           Enhance your Digital Strategy
           <br />
-          with Tech Monkeys
+          with techmonkeys
         </h1>
 
         <button 
