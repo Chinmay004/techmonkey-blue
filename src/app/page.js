@@ -27,11 +27,18 @@ export default function Home() {
         </section>
         <section
           id="testimonials"
-          className="bg-black text-white py-12 sm:py-16 md:py-20 overflow-hidden"
+          className="relative bg-black text-white py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne px-4 sm:px-8 md:px-14 mb-8 md:mb-12">
-            Testimonials
-          </h2>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-syne mb-4">
+                What Our Clients Say
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
+                Don't just take our word for it. Here's what our clients have to say about working with Tech Monkeys.
+              </p>
+            </div>
+          </div>
           <div className="w-full">
             <TestimonialsSection />
           </div>
