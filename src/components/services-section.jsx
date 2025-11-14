@@ -1,13 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false }) => {
+const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false, noBottomMargin = false, animationDelay = "0s", flyDirection = "left", isVisible = false, isMobile = false }) => {
+  const getAnimationClass = () => {
+    if (!isVisible) return "";
+    
+    // On mobile, use fade-in animation
+    if (isMobile) {
+      return "animate-fade-in-up";
+    }
+    
+    // On desktop, use directional animations
+    switch(flyDirection) {
+      case "left":
+        return "animate-fly-in-left";
+      case "right":
+        return "animate-fly-in-right";
+      case "top":
+        return "animate-fly-in-top";
+      case "bottom":
+        return "animate-fly-in-bottom";
+      default:
+        return "animate-fly-in-left";
+    }
+  };
+
   return (
     <div 
-      className="relative rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden"
+      className={`relative rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden ${isVisible ? getAnimationClass() : 'service-card-hidden'}`}
       style={{
         backgroundColor: "#191919ff",
-        border: "1px solid #2B2B2B"
+        border: "1px solid #2B2B2B",
+        animationDelay: animationDelay
       }}
     >
       <div 
@@ -33,12 +59,12 @@ const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false }) 
         </div>
       )}
 
-      <div className="relative z-10 space-y-4 sm:space-y-6">
-        <h3 className="text-2xl sm:text-3xl font-bold text-white font-syne">
+      <div className="relative z-10 space-y-4 sm:space-y-6 ">
+        <h3 className="text-2xl sm:text-2xl font-bold text-white font-syne">
           {title}
         </h3>
 
-        <ul className="space-y-3 text-sm sm:text-base text-gray-400">
+        <ul className={`text-sm sm:text-base text-gray-400 ${noBottomMargin ? 'mb-0' : 'mb-40'}`} >
           {items.map((item, index) => (
             <li key={index} className="flex items-start gap-2">
               <span className="text-gray-500 mt-1">•</span>
@@ -99,8 +125,51 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="services"
       className="w-full bg-black text-white py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8"
     >
@@ -112,22 +181,34 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {services.slice(0, 3).map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              items={service.items}
-              iconSrc={service.iconSrc}
-            />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 h-full">
+          {services.slice(0, 3).map((service, index) => {
+            const directions = ["left", "top", "right"];
+            return (
+              <ServiceCard
+                key={index}
+                title={service.title}
+                items={service.items}
+                iconSrc={service.iconSrc}
+                animationDelay={`${0.1 + index * 0.1}s`}
+                flyDirection={directions[index]}
+                isVisible={isVisible}
+                isMobile={isMobile}
+              />
+            );
+          })}
           
-          <div className="md:col-span-2 lg:col-span-3">
+          <div className="md:col-span-2 lg:col-span-3  ">
             <ServiceCard
               title={services[3].title}
               items={services[3].items}
               iconSrc={services[3].iconSrc}
               largeIcon={true}
+              noBottomMargin={true}
+              animationDelay="0.4s"
+              flyDirection="bottom"
+              isVisible={isVisible}
+              isMobile={isMobile}
             />
           </div>
         </div>

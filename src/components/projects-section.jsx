@@ -114,13 +114,21 @@ const ProjectCard = ({ project }) => {
           <div className="w-full lg:w-1/2 flex flex-col justify-center lg:justify-end items-center lg:items-end mt-4 lg:mt-0">
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-gray-700 bg-gray-900 group">
               {project.useEmbed ? (
-                <iframe
-                  src={project.link}
-                  title={project.imageAlt}
-                  className="w-full h-full border-0"
-                  loading="lazy"
-                  sandbox="allow-scripts allow-same-origin"
-                />
+                <div className="w-full h-full" style={{ overflow: 'hidden' }}>
+                  <iframe
+                    src={project.link}
+                    title={project.imageAlt}
+                    className="border-0"
+                    style={{ 
+                      width: '200%', 
+                      height: '200%', 
+                      transform: 'scale(0.5)',
+                      transformOrigin: 'top left'
+                    }}
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                </div>
               ) : (
                 <div className="relative w-full h-full overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-[200%] animate-scroll-slow">
@@ -133,6 +141,29 @@ const ProjectCard = ({ project }) => {
                   </div>
                 </div>
               )}
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 right-3 z-20 p-2 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110"
+                aria-label="Open website in new tab"
+                title="Open website"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

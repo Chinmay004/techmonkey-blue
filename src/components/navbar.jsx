@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`hidden md:flex fixed right-0 top-0 h-screen w-32 bg-black/20 backdrop-blur-2xl flex-col items-center justify-center z-50 transition-opacity duration-500 ${
+      className={`hidden md:flex fixed right-0 top-0 h-screen w-28 bg-black/20 backdrop-blur-2xl flex-col items-center justify-center z-50 transition-opacity duration-500 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
@@ -37,7 +37,7 @@ export default function Navbar() {
           <li key={item.name} className="relative group">
             <a
               href={item.href}
-              className="text-white hover:text-blue-400 transition-color duration-300 transform rotate-90 inline-block text-xl font-medium tracking-wider"
+              className="text-white hover:text-blue-400 transition-color duration-300 transform rotate-90 inline-block text-xl  tracking-wider"
             >
               {item.name}
             </a>

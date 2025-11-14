@@ -6,6 +6,7 @@ import TestimonialsSection from "@/components/testimonial-section";
 import FooterContent from "@/components/footer";
 import ServicesSection from "@/components/services-section";
 
+
 export default function Home() {
   return (
     <main className="overflow-x-hidden">

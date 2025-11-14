@@ -96,3 +96,164 @@ body {
 .animate-scroll-slow {
   animation: scroll-slow 20s ease-in-out infinite;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+
+@keyframes flyInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flyInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flyInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flyInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fly-in-left {
+  animation: flyInLeft 0.8s ease-out forwards;
+}
+
+.animate-fly-in-right {
+  animation: flyInRight 0.8s ease-out forwards;
+}
+
+.animate-fly-in-top {
+  animation: flyInTop 0.8s ease-out forwards;
+}
+
+.animate-fly-in-bottom {
+  animation: flyInBottom 0.8s ease-out forwards;
+}
+
+.service-card-hidden {
+  opacity: 0;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.brand-name-gradient {
+  color: #ffffff !important;
+  letter-spacing: -0.02em;
+  position: relative;
+  font-weight: 700;
+  text-transform: lowercase;
+  text-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.4),
+    0 0 16px rgba(255, 255, 255, 0.2);
+  filter: brightness(1.05);
+  display: inline-block;
+}
