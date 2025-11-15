@@ -35,7 +35,7 @@ export default function Home() {
                 What Our Clients Say
               </h2>
               <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our clients have to say about working with Tech Monkeys.
+                Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with Tech Monkeys.
               </p>
             </div>
           </div>
