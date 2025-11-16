@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const projectsData = [
@@ -39,14 +39,69 @@ const projectsData = [
   },
 ];
 
-const StatItem = ({ label, value }) => (
-  <div className="text-center">
-    <p className="text-xs sm:text-sm text-gray-400 mb-2">{label}</p>
-    <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-      {value}
-    </p>
-  </div>
-);
+const StatItem = ({ label, value }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const statRef = useRef(null);
+  
+  // Extract the number from the value string (e.g., "52 +" -> 52)
+  const targetValue = parseInt(value.replace(/[^0-9]/g, ''));
+  const suffix = value.replace(/[0-9]/g, '').trim();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statRef.current) {
+      observer.observe(statRef.current);
+    }
+
+    return () => {
+      if (statRef.current) {
+        observer.unobserve(statRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime;
+    const duration = 2000; // 2 seconds animation
+
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.floor(easeOutQuart * targetValue);
+      
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, targetValue]);
+
+  return (
+    <div ref={statRef} className="text-center">
+      <p className="text-xs sm:text-sm text-gray-400 mb-2">{label}</p>
+      <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+        {count} {suffix}
+      </p>
+    </div>
+  );
+};
 
 const ProjectCard = ({ project }) => {
   return (
@@ -193,9 +248,9 @@ export default function ProjectsSection() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-12 sm:gap-16 md:gap-24 lg:gap-32 mb-12 sm:mb-16 md:mb-20">
-          <StatItem label="Total Clients" value="10 +" />
-          <StatItem label="Total Projects" value="10 +" />
-          <StatItem label="Countries" value="120 +" />
+          <StatItem label="Total Clients" value="52 +" />
+          <StatItem label="Total Projects" value="90 +" />
+          <StatItem label="Countries" value="5 +" />
         </div>
 
         <div className="space-y-6 sm:space-y-8 md:space-y-10">

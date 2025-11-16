@@ -100,7 +100,17 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp2 {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -148,8 +158,29 @@ body {
   }
 }
 
+@keyframes logoEntry {
+  0% {
+    opacity: 0;
+    transform: scale(1.15);
+    clip-path: inset(0 0 100% 0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.15);
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
+}
+.animate-fade-in-up2 {
+  animation: fadeInUp2 0.8s ease-out forwards;
 }
 
 .animate-fade-in {
@@ -167,6 +198,25 @@ body {
 .animate-bounce-subtle {
   animation: bounce-subtle 2s ease-in-out infinite;
   animation-delay: 2.2s;
+}
+
+.animate-logo-entry {
+  animation: logoEntry 1.8s ease-out forwards;
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-text-reveal {
+  animation: textReveal 1.2s ease-out forwards;
 }
 
 @keyframes flyInLeft {
@@ -230,6 +280,58 @@ body {
 }
 
 .service-card-hidden {
+  opacity: 0;
+}
+
+/* Service Card Animations */
+@keyframes cardBackgroundSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imageFadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-card-bg {
+  animation: cardBackgroundSlideUp 1s ease-out forwards;
+}
+
+.animate-card-text {
+  animation: textFadeIn 1.2s ease-out forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+.animate-card-image {
+  animation: imageFadeInScale 0.8s ease-out forwards;
+  animation-delay: 1s;
   opacity: 0;
 }
 
