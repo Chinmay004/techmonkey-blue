@@ -4,36 +4,12 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false, noBottomMargin = false, animationDelay = "0s", flyDirection = "left", isVisible = false, isMobile = false }) => {
-  const getAnimationClass = () => {
-    if (!isVisible) return "";
-    
-    // On mobile, use fade-in animation
-    if (isMobile) {
-      return "animate-fade-in-up";
-    }
-    
-    // On desktop, use directional animations
-    switch(flyDirection) {
-      case "left":
-        return "animate-fly-in-left";
-      case "right":
-        return "animate-fly-in-right";
-      case "top":
-        return "animate-fly-in-top";
-      case "bottom":
-        return "animate-fly-in-bottom";
-      default:
-        return "animate-fly-in-left";
-    }
-  };
-
   return (
     <div 
-      className={`relative rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden ${isVisible ? getAnimationClass() : 'service-card-hidden'}`}
+      className={`relative rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden ${isVisible ? 'animate-card-bg' : 'service-card-hidden'}`}
       style={{
         backgroundColor: "#191919ff",
-        border: "1px solid #2B2B2B",
-        animationDelay: animationDelay
+        border: "1px solid #2B2B2B"
       }}
     >
       <div 
@@ -45,11 +21,11 @@ const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false, no
       />
 
       {iconSrc && (
-        <div className={`absolute bottom-0 right-0 opacity-90 pointer-events-none ${
+        <div className={`absolute bottom-0 right-0 pointer-events-none ${
           largeIcon 
             ? "w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]" 
             : "w-48 h-48 sm:w-64 sm:h-64 md:w-70 md:h-70"
-        }`}>
+        } ${isVisible ? 'animate-card-image' : ''}`}>
           <Image
             src={iconSrc}
             alt={`${title} icon`}
@@ -59,7 +35,7 @@ const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false, no
         </div>
       )}
 
-      <div className="relative z-10 space-y-4 sm:space-y-6 ">
+      <div className={`relative z-10 space-y-4 sm:space-y-6 ${isVisible ? 'animate-card-text' : ''}`}>
         <h3 className="text-2xl sm:text-2xl font-bold text-white font-syne">
           {title}
         </h3>
@@ -182,21 +158,16 @@ export default function ServicesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 h-full">
-          {services.slice(0, 3).map((service, index) => {
-            const directions = ["left", "top", "right"];
-            return (
-              <ServiceCard
-                key={index}
-                title={service.title}
-                items={service.items}
-                iconSrc={service.iconSrc}
-                animationDelay={`${0.1 + index * 0.1}s`}
-                flyDirection={directions[index]}
-                isVisible={isVisible}
-                isMobile={isMobile}
-              />
-            );
-          })}
+          {services.slice(0, 3).map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              items={service.items}
+              iconSrc={service.iconSrc}
+              isVisible={isVisible}
+              isMobile={isMobile}
+            />
+          ))}
           
           <div className="md:col-span-2 lg:col-span-3  ">
             <ServiceCard
@@ -205,8 +176,6 @@ export default function ServicesSection() {
               iconSrc={services[3].iconSrc}
               largeIcon={true}
               noBottomMargin={true}
-              animationDelay="0.4s"
-              flyDirection="bottom"
               isVisible={isVisible}
               isMobile={isMobile}
             />

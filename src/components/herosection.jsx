@@ -108,8 +108,8 @@ export default function HeroSection() {
 
         <div className="absolute top-0 left-0 z-20 p-4 sm:p-6 md:p-12 lg:p-16 mt-5">
           <span 
-            className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-syne animate-fade-in-up opacity-0 brand-name-gradient "
-            style={{ animationDelay: "0.2s" }}
+            className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-syne animate-logo-entry brand-name-gradient "
+            style={{ animationDelay: "0s" }}
           >
             techmonkeys
           </span>
@@ -121,32 +121,40 @@ export default function HeroSection() {
               <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl leading-tight font-syne font-normal mb-2 sm:mb-2 animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
                 Your Personal
               </h1>
-              <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight md:leading-none font-syne font-bold break-words md:whitespace-nowrap animate-fade-in-up opacity-0" style={{ animationDelay: "0.6s" }}>
+              <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight md:leading-none font-syne font-bold break-words md:whitespace-nowrap animate-fade-in-up2 opacity-0" style={{ animationDelay: "0.6s" }}>
                 Digital <br className="md:hidden" />Agency
               </h1>
             </div>
 
             <button
               onClick={handleOpenModal}
-              className="bg-white text-black px-6 py-2.5 sm:px-8 md:px-10 md:py-3.5 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition duration-300 mb-8 sm:mb-10 md:mb-20 animate-fade-in-scale opacity-0 hover:scale-105 cursor-pointer"
-              style={{ minHeight: "44px", minWidth: "44px", animationDelay: "0.8s" }}
+              className="bg-white text-black px-6 py-2.5 sm:px-8 md:px-10 md:py-3.5 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition duration-300 mb-8 sm:mb-10 md:mb-20 animate-fade-in opacity-0 hover:scale-105 cursor-pointer"
+              style={{ minHeight: "44px", minWidth: "44px", animationDelay: "1s" }}
             >
               Connect Now
             </button>
 
           <div className="hidden md:block max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-            {/* <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed animate-fade-in opacity-0" style={{ animationDelay: "1s" }}>
-              We are a UAE Based Design Agency. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Elementum felis, sed ullamcorper
-              tempus faucibus in imperdiet. Semper justo mauris sed fusce erat
-              aenean tristique.
-            </p> */}
+            <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">
+              <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.3s" }}>
+                We are a UAE Based Design Agency. Lorem ipsum dolor sit amet,
+              </span>
+              <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.5s" }}>
+                consectetur adipiscing elit. Elementum felis, sed ullamcorper
+              </span>
+              <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.7s" }}>
+                tempus faucibus in imperdiet. Semper justo mauris sed fusce erat
+              </span>
+              <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.9s" }}>
+                aenean tristique.
+              </span>
+            </p>
           </div>
         </div>
       </div>
 
       <div className="absolute bottom-4 sm:bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
-        <p className="text-xs sm:text-sm text-gray-400 animate-fade-in opacity-0" style={{ animationDelay: "1.2s" }}>
+        <p className="text-xs sm:text-sm text-gray-400 animate-fade-in opacity-0" style={{ animationDelay: "2.1s" }}>
           <span className="inline-block animate-bounce-subtle">Scroll for more</span>
         </p>
       </div>
