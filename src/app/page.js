@@ -45,7 +45,7 @@ export default function Home() {
         </section>
         <section
           id="connect"
-          className="min-h-screen bg-primary text-white overflow-hidden"
+          className=" bg-primary text-white overflow-hidden"
         >
           <FooterContent></FooterContent>
         </section>
