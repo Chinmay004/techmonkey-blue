@@ -2,6 +2,12 @@
 
 import React, { useState } from "react";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEYS = [
+  "fbff9244-62dc-4bf2-a205-539d1a2666fa",
+  "9b53701b-3b85-4c5f-baeb-36e61612d1fb",
+];
+
 export default function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
@@ -15,16 +21,20 @@ export default function HeroSection() {
     email: "",
     phone: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleOpenModal = (e) => {
     e.preventDefault();
     setIsModalOpen(true);
+    setSubmitError("");
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setFormData({ name: "", email: "", phone: "" });
     setErrors({ name: "", email: "", phone: "" });
+    setSubmitError("");
   };
 
   const validateEmail = (email) => {
@@ -46,9 +56,10 @@ export default function HeroSection() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setSubmitError("");
+
     let newErrors = { name: "", email: "", phone: "" };
     let isValid = true;
 
@@ -81,17 +92,49 @@ export default function HeroSection() {
       return;
     }
 
-    // Here you would typically send the data to your backend
-    // For now, we'll just show the thank you message
-    setIsModalOpen(false);
-    setShowThankYou(true);
-    setFormData({ name: "", email: "", phone: "" });
-    setErrors({ name: "", email: "", phone: "" });
+    setIsSubmitting(true);
 
-    // Auto-close thank you popup after 3 seconds
-    setTimeout(() => {
-      setShowThankYou(false);
-    }, 3000);
+    try {
+      await Promise.all(
+        WEB3FORMS_ACCESS_KEYS.map(async (accessKey) => {
+          const response = await fetch(WEB3FORMS_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              access_key: accessKey,
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              subject: "New TechMonkeys Website Inquiry",
+              message: `Lead Details:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}`,
+            }),
+          });
+
+          const data = await response.json();
+          if (!data.success) {
+            throw new Error(data.message || "Submission failed");
+          }
+        })
+      );
+
+      setIsModalOpen(false);
+      setShowThankYou(true);
+      setFormData({ name: "", email: "", phone: "" });
+      setErrors({ name: "", email: "", phone: "" });
+
+      setTimeout(() => {
+        setShowThankYou(false);
+      }, 3000);
+    } catch (error) {
+      setSubmitError(
+        "Something went wrong while sending your request. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,10 +161,10 @@ export default function HeroSection() {
         <div className="absolute inset-0 z-10 flex flex-col justify-center md:justify-end px-4 sm:px-6 md:px-12 lg:px-16 pb-24 sm:pb-28 md:pb-20 lg:pb-24">
           <div className="w-full max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
             <div className="mb-6 sm:mb-8 md:mb-8">
-              <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl leading-tight font-syne font-normal mb-2 sm:mb-2 animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
+              <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl leading-tight font-syne font-normal mb-2 sm:mb-2 animate-fade-in-up opacity-0 " style={{ animationDelay: "0.4s" }}>
                 Your Personal
               </h1>
-              <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight md:leading-none font-syne font-bold break-words md:whitespace-nowrap animate-fade-in-up2 opacity-0" style={{ animationDelay: "0.6s" }}>
+              <h1 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-8xl leading-tight md:leading-none font-syne font-bold break-words md:whitespace-nowrap animate-fade-in-up2 opacity-0" style={{ animationDelay: "0.6s" }}>
                 Digital <br className="md:hidden" />Agency
               </h1>
             </div>
@@ -134,20 +177,20 @@ export default function HeroSection() {
               Connect Now
             </button>
 
-          <div className="hidden md:block max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+          <div className="hidden md:block max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl ">
             <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">
               <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.3s" }}>
-                We are a UAE Based Design Agency. Lorem ipsum dolor sit amet,
+                We are a UAE Based Design Agency.  Whether you need web design, mobile apps, or tailor-made consulting,
               </span>
               <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.5s" }}>
-                consectetur adipiscing elit. Elementum felis, sed ullamcorper
+              We swing into action with relentless creativity and razor sharp strategy every single day. 
               </span>
               <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.7s" }}>
-                tempus faucibus in imperdiet. Semper justo mauris sed fusce erat
+              Join us let’s turn digital dreams into business that actually pays off.
               </span>
-              <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.9s" }}>
+              {/* <span className="block animate-text-reveal opacity-0" style={{ animationDelay: "1.9s" }}>
                 aenean tristique.
-              </span>
+              </span> */}
             </p>
           </div>
         </div>
@@ -268,11 +311,18 @@ export default function HeroSection() {
                 )}
               </div>
 
+              {submitError && (
+                <p className="text-sm text-red-400 text-center">{submitError}</p>
+              )}
+
               <button
                 type="submit"
-                className="w-full bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition duration-300 hover:scale-105 active:scale-95"
+                disabled={isSubmitting}
+                className={`w-full bg-white text-black px-6 py-3 rounded-lg font-medium transition duration-300 hover:scale-105 active:scale-95 ${
+                  isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-gray-200"
+                }`}
               >
-                Submit
+                {isSubmitting ? "Sending..." : "Submit"}
               </button>
             </form>
           </div>

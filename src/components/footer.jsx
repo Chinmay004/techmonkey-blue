@@ -2,6 +2,12 @@
 
 import React, { useState } from "react";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEYS = [
+  "fbff9244-62dc-4bf2-a205-539d1a2666fa",
+  "9b53701b-3b85-4c5f-baeb-36e61612d1fb",
+];
+
 const ContactInfo = ({ label, children, icon }) => (
   <div className="group">
     <p className="text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-3">
@@ -50,16 +56,20 @@ const FooterContent = () => {
     email: "",
     phone: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleOpenModal = (e) => {
     e.preventDefault();
     setIsModalOpen(true);
+    setSubmitError("");
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setFormData({ name: "", email: "", phone: "" });
     setErrors({ name: "", email: "", phone: "" });
+    setSubmitError("");
   };
 
   const validateEmail = (email) => {
@@ -81,9 +91,10 @@ const FooterContent = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setSubmitError("");
+
     let newErrors = { name: "", email: "", phone: "" };
     let isValid = true;
 
@@ -116,17 +127,49 @@ const FooterContent = () => {
       return;
     }
 
-    // Here you would typically send the data to your backend
-    // For now, we'll just show the thank you message
-    setIsModalOpen(false);
-    setShowThankYou(true);
-    setFormData({ name: "", email: "", phone: "" });
-    setErrors({ name: "", email: "", phone: "" });
+    setIsSubmitting(true);
 
-    // Auto-close thank you popup after 3 seconds
-    setTimeout(() => {
-      setShowThankYou(false);
-    }, 3000);
+    try {
+      await Promise.all(
+        WEB3FORMS_ACCESS_KEYS.map(async (accessKey) => {
+          const response = await fetch(WEB3FORMS_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              access_key: accessKey,
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              subject: "New TechMonkeys Website Inquiry",
+              message: `Lead Details:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}`,
+            }),
+          });
+
+          const data = await response.json();
+          if (!data.success) {
+            throw new Error(data.message || "Submission failed");
+          }
+        })
+      );
+
+      setIsModalOpen(false);
+      setShowThankYou(true);
+      setFormData({ name: "", email: "", phone: "" });
+      setErrors({ name: "", email: "", phone: "" });
+
+      setTimeout(() => {
+        setShowThankYou(false);
+      }, 3000);
+    } catch (error) {
+      setSubmitError(
+        "Something went wrong while sending your request. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -396,11 +439,18 @@ const FooterContent = () => {
               )}
             </div>
 
+            {submitError && (
+              <p className="text-sm text-red-400 text-center">{submitError}</p>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition duration-300 hover:scale-105 active:scale-95"
+              disabled={isSubmitting}
+              className={`w-full bg-white text-black px-6 py-3 rounded-lg font-medium transition duration-300 hover:scale-105 active:scale-95 ${
+                isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-gray-200"
+              }`}
             >
-              Submit
+              {isSubmitting ? "Sending..." : "Submit"}
             </button>
           </form>
         </div>
