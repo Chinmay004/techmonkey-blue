@@ -284,25 +284,31 @@ const FooterContent = () => {
               <div className="space-y-6">
                 <ContactInfo label="Phone">
                   <a 
-                    href="tel:+1234567890"
+                    href="tel:+971503900886"
                     className="inline-flex items-center gap-2 hover:text-white transition-colors duration-300 group"
                   >
                     <svg className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <span>+1 (234) 567-890</span>
+                    <span>+971 50 390 0886</span>
                   </a>
                 </ContactInfo>
                 <ContactInfo label="Email">
                   <a 
-                    href="mailto:contact@techmonkeys.com"
+                    href="mailto:support@techmonkey.space"
                     className="inline-flex items-center gap-2 hover:text-white transition-colors duration-300 break-all group"
                   >
                     <svg className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span>contact@techmonkeys.com</span>
+                    <span>support@techmonkey.space</span>
                   </a>
+                </ContactInfo>
+                <ContactInfo label="Address">
+                  <p className="text-base text-gray-300 leading-relaxed">
+                    VUNE0650, Compass Building - Al Hulaia, Al Hulaia Industrial Zone-FZ,<br />
+                    Ras Al Khaimah, United Arab Emirates
+                  </p>
                 </ContactInfo>
                 <ContactInfo label="Availability">
                   <div className="inline-flex items-center gap-2">
