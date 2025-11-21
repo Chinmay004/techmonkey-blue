@@ -37,6 +37,30 @@ const projectsData = [
     link: "https://fixnex.vercel.app",
     useEmbed: true,
   },
+  {
+    id: "sharevan",
+    category: "Logistics",
+    title: "Sharevan App Experience Design",
+    description:
+      "We crafted Sharevan App with a clean, intuitive, and bold interface that reflects their modern logistics ethos. The experience focuses on seamless navigation that supports fast, reliable pickup and delivery services.",
+    imageSrc: "/sharevan-preview.png",
+    imageAlt: "Sharevan App UI Preview",
+    videoSrc: "/video/sharevan-video.mp4",
+    link: null,
+    useEmbed: false,
+  },
+  {
+    id: "techmonkey-crm",
+    category: "CRM Platform",
+    title: "TechMonkey CRM Experience",
+    description:
+      "We designed TechMonkey CRM to give sales teams a sleek cockpit for managing relationships, automations, and analytics. Bold typography, contrasting panels, and micro-interactions keep the experience fast and delightful across desktop and tablet.",
+    imageSrc: "/techmonkey-crm-preview.png",
+    imageAlt: "TechMonkey CRM dashboard preview",
+    videoSrc: "/video/crm-video.mp4",
+    // link: "https://techmonkeycrm.com",
+    useEmbed: false,
+  },
 ];
 
 const StatItem = ({ label, value }) => {
@@ -104,6 +128,8 @@ const StatItem = ({ label, value }) => {
 };
 
 const ProjectCard = ({ project }) => {
+  const hasLink = Boolean(project.link);
+
   return (
     <div
       className="relative w-full rounded-3xl overflow-hidden border border-gray-800"
@@ -139,36 +165,61 @@ const ProjectCard = ({ project }) => {
             </p>
 
             <div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block relative px-5 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 rounded-full font-semibold text-sm sm:text-base text-white transition-all duration-300 hover:scale-105 overflow-hidden group"
-                style={{
-                  minHeight: "44px",
-                  minWidth: "44px",
-                  background:
-                    "linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%)",
-                  backdropFilter: "blur(10px)",
-                  boxShadow: "0 8px 32px 0 rgba(37, 99, 235, 0.3)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-              >
-                <span className="relative z-10">View Project</span>
+              {hasLink ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block relative px-5 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 rounded-full font-semibold text-sm sm:text-base text-white transition-all duration-300 hover:scale-105 overflow-hidden group"
+                  style={{
+                    minHeight: "44px",
+                    minWidth: "44px",
+                    background:
+                      "linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%)",
+                    backdropFilter: "blur(10px)",
+                    boxShadow: "0 8px 32px 0 rgba(37, 99, 235, 0.3)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                  }}
+                >
+                  <span className="relative z-10">View Project</span>
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(37, 99, 235, 0.8) 100%)",
+                    }}
+                  />
+                </a>
+              ) : (
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="inline-block px-5 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 rounded-full text-sm sm:text-base font-semibold text-white/80 border border-white/20"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(37, 99, 235, 0.8) 100%)",
+                      "linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)",
+                    backdropFilter: "blur(10px)",
                   }}
-                />
-              </a>
+                >
+                  Case Study Coming Soon
+                </div>
+              )}
             </div>
           </div>
 
           <div className="w-full lg:w-1/2 flex flex-col justify-center lg:justify-end items-center lg:items-end mt-4 lg:mt-0">
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-gray-700 bg-gray-900 group">
-              {project.useEmbed ? (
+              {project.videoSrc ? (
+                <div className="w-full h-full pointer-events-none select-none">
+                  <video
+                    src={project.videoSrc}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                    style={{ pointerEvents: "none" }}
+                  />
+                </div>
+              ) : project.useEmbed ? (
                 <div className="w-full h-full" style={{ overflow: 'hidden' }}>
                   <iframe
                     src={project.link}
@@ -196,29 +247,31 @@ const ProjectCard = ({ project }) => {
                   </div>
                 </div>
               )}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-3 right-3 z-20 p-2 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110"
-                aria-label="Open website in new tab"
-                title="Open website"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+              {hasLink && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-3 right-3 z-20 p-2 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110"
+                  aria-label="Open website in new tab"
+                  title="Open website"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              )}
             </div>
           </div>
         </div>
