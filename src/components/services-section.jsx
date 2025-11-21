@@ -3,10 +3,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-const ServiceCard = ({ title, description, items, iconSrc, largeIcon = false, noBottomMargin = false, animationDelay = "0s", flyDirection = "left", isVisible = false, isMobile = false }) => {
+const ServiceCard = ({
+  title,
+  description,
+  items,
+  iconSrc,
+  largeIcon = false,
+  noBottomMargin = false,
+  animationDelay = "0s",
+  flyDirection = "left",
+  isVisible = false,
+  isMobile = false,
+  className = "",
+}) => {
   return (
     <div 
-      className={`relative rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden ${isVisible ? 'animate-card-bg' : 'service-card-hidden'}`}
+      className={`relative rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden ${isVisible ? 'animate-card-bg' : 'service-card-hidden'} ${className}`}
       style={{
         backgroundColor: "#191919ff",
         border: "1px solid #2B2B2B"
@@ -169,7 +181,7 @@ export default function ServicesSection() {
             />
           ))}
           
-          <div className="md:col-span-2 lg:col-span-3  ">
+          <div className="md:col-span-2 lg:col-span-3 ">
             <ServiceCard
               title={services[3].title}
               items={services[3].items}
@@ -178,6 +190,7 @@ export default function ServicesSection() {
               noBottomMargin={true}
               isVisible={isVisible}
               isMobile={isMobile}
+              className="min-h-[400px] sm:min-h-full"
             />
           </div>
         </div>
